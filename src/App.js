@@ -12,7 +12,13 @@ function App() {
           
               <Routes>
                 <Route path='/' element={<MyForm />} />
+                <Route path='/react-php-crud-app/' element={<MyForm />} />
+                <Route path='react-php-crud-app/' element={<MyForm />} />
+                <Route path='/react-php-crud-app/list' element={<List  />} />
+                <Route path='/react-php-crud-app/list/' element={<List  />} />
+                <Route path='react-php-crud-app/list' element={<List  />} />
                 <Route path='/list' element={<List  />} />
+                <Route path='/list/' element={<List  />} />
               </Routes>
          
         </Router>
