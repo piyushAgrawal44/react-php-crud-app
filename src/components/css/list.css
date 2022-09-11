@@ -1,0 +1,9 @@
+.manage_overflow{
+    max-width: 100px;
+    overflow-x: hidden; 
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+}
+.manage_overflow::-webkit-scrollbar {
+    display: none;
+  }

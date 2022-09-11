@@ -2,7 +2,11 @@
 // import '../MyForm.css';
 import $ from 'jquery';
 function MyForm() {
-
+    setTimeout(function(){
+        // $('#myTable').DataTable();
+        document.getElementById('home_link').classList.add('active');
+        document.getElementById('list_link').classList.remove('active');
+} ,500);
     function handleSubmit(e){
     //  var mForm=document.getElementById('mForm');
     //  console.log(mForm);
@@ -49,10 +53,10 @@ function MyForm() {
                         <input className="form-control" type="text" required name='myName' id='myName' placeholder='Enter Your Name...' />
                     </div>
                     <div className="mb-3">
-                        <input className="form-control" type="text" name='myNickName' id='myNickName' placeholder='Enter Your Nick Name...' />
+                        <input className="form-control" type="text" required name='myNickName' id='myNickName' placeholder='Enter Your Nick Name...' />
                     </div>
                     <div className="mb-3">
-                        <input className="form-control" type="text" name='mySchoolName' id='mySchoolName' placeholder='Enter Your School Name...' />
+                        <input className="form-control" type="text" required name='mySchoolName' id='mySchoolName' placeholder='Enter Your School Name...' />
                     </div>
                     <div className="text-center">
                         <button type="submit" id='submit_btn' className="btn btn-outline-primary">Save Details</button>
