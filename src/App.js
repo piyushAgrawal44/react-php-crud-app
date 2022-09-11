@@ -8,10 +8,10 @@ function App() {
   return (
     <div className="App">
         <Navbar />
-        <Router basename={process.env.PUBLIC_URL}>
+        <Router>
           
               <Routes>
-                <Route exact path='/' element={<MyForm />} />
+                <Route path='/' element={<MyForm />} />
                 
                 <Route path='/list' element={<List  />} />
               </Routes>
