@@ -15,7 +15,7 @@ function Navbar() {
                             <a className="nav-link active" id="home_link" aria-current="page" href="/react-php-crud-app/">Home</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link " id="list_link" href="/react-php-crud-app/list">View Details</a>
+                            <a className="nav-link " id="list_link" href="/react-php-crud-app/#/list">View Details</a>
                         </li>
                         
                     </ul>
