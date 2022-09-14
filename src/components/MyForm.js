@@ -15,7 +15,7 @@ function MyForm() {
         var myNickName=document.getElementById('myNickName').value;
         var mySchoolName=document.getElementById('mySchoolName').value;
         $.ajax({
-            url: "https://mirnadatabaseforresearchers.000webhostapp.com/enter_details.php",
+            url: "https://mirnadatabaseforresearchers.000webhostapp.com/crud_app_api/enter_details.php",
             type: 'POST',
             data: {
                 'myName': myName,
@@ -31,14 +31,14 @@ function MyForm() {
                 document.getElementById('myName').value="";
                 document.getElementById('myNickName').value="";
                 document.getElementById('mySchoolName').value="";
-            }.bind(this),
+            },
             // Fail..
             error: function(error) {
                 
                 console.log(error);
                 
                 alert("Sorry some technical issue.");
-            }.bind(this)
+            }
         });
     
         

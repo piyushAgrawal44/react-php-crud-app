@@ -8,7 +8,7 @@ function List() {
             var answer=window.confirm("Are you sure !!");
             if (answer) {
                 $.ajax({
-                    url: "https://mirnadatabaseforresearchers.000webhostapp.com/remove_details.php",
+                    url: "https://mirnadatabaseforresearchers.000webhostapp.com/crud_app_api/remove_details.php",
                     type: 'POST',
                     data: {
                         'id': id,
@@ -50,6 +50,32 @@ function List() {
         $('#editFormSchoolName').val(schoolName);
         $("#myEditModalButton").click();
     }
+
+    function updateDetails(e){
+        e.preventDefault();
+        var myName=document.getElementById('editFormName').value;
+        var myNickName=document.getElementById('editFormNickName').value;
+        var mySchoolName=document.getElementById('editFormSchoolName').value;
+        $.ajax({
+            url: "https://mirnadatabaseforresearchers.000webhostapp.com/crud_app_api/update_details.php",
+            type: 'POST',
+            data: {
+                'name': myName,
+                'nick_name': myNickName,
+                'school_name': mySchoolName,
+            },
+            cache: false,
+            success: function(data) {
+                // Success..
+                alert(data);
+                console.log(data);
+            },
+            error: function(error) {
+                console.log(error);   
+                alert("Sorry some technical issue.");
+            }
+        });
+    }
     
     function showFullDetails(text){
         $('#text').text(text);
@@ -63,7 +89,7 @@ function List() {
     }, []);
 
     async function fetchRepo() {
-        await fetch("https://mirnadatabaseforresearchers.000webhostapp.com/get_details.php").then(res => res.json()).then(data => {
+        await fetch("https://mirnadatabaseforresearchers.000webhostapp.com/crud_app_api/get_details.php").then(res => res.json()).then(data => {
             setdetails(data);
         });
     }
@@ -156,7 +182,7 @@ function List() {
                         <h5 className="modal-title">Edit Details</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="#">
+                    <form method='post' onSubmit={()=>updateDetails(this)} >
                         <div className="modal-body text-start">
                             <input type="hidden" name='row_id' readOnly/>
                             <div className="mb-3">
@@ -173,7 +199,7 @@ function List() {
                             </div>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-primary">coming soon</button>
+                            <button type="submit"  className="btn btn-primary">Save</button>
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
                     </form>
