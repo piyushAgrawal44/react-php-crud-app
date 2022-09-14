@@ -44,7 +44,7 @@ function List() {
         var name=document.getElementsByClassName('name'+id)[0].innerText;
         var nickName=document.getElementsByClassName('nickName'+id)[0].innerText;
         var schoolName=document.getElementsByClassName('schoolName'+id)[0].innerText;
-        
+        $('#row_id').val(id);
         $('#editFormName').val(name);
         $('#editFormNickName').val(nickName);
         $('#editFormSchoolName').val(schoolName);
@@ -53,6 +53,7 @@ function List() {
 
     function updateDetails(e){
         e.preventDefault();
+        var myId=document.getElementById('row_id').value;
         var myName=document.getElementById('editFormName').value;
         var myNickName=document.getElementById('editFormNickName').value;
         var mySchoolName=document.getElementById('editFormSchoolName').value;
@@ -60,15 +61,18 @@ function List() {
             url: "https://mirnadatabaseforresearchers.000webhostapp.com/crud_app_api/update_details.php",
             type: 'POST',
             data: {
+                'row_id':myId,
                 'name': myName,
                 'nick_name': myNickName,
                 'school_name': mySchoolName,
             },
             cache: false,
             success: function(data) {
-                // Success..
+                $('#close_btn_edit_form').click();
                 alert(data);
-                console.log(data);
+                document.getElementsByClassName('name'+myId)[0].innerText=myName;
+                document.getElementsByClassName('nickName'+myId)[0].innerText=myNickName;
+                document.getElementsByClassName('schoolName'+myId)[0].innerText=mySchoolName;
             },
             error: function(error) {
                 console.log(error);   
@@ -182,9 +186,9 @@ function List() {
                         <h5 className="modal-title">Edit Details</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form method='post' onSubmit={()=>updateDetails(this)} >
+                    <form id='updateForm' onSubmit={(e)=>updateDetails(e)} >
                         <div className="modal-body text-start">
-                            <input type="hidden" name='row_id' readOnly/>
+                            <input type="hidden" name='row_id' id='row_id' readOnly/>
                             <div className="mb-3">
                                 <label htmlFor="name" className='text-primary'><b>Name</b><span className='text-danger'> *</span></label>
                                 <input className='form-control' type="text" name='myName' id='editFormName' />
@@ -200,7 +204,7 @@ function List() {
                         </div>
                         <div className="modal-footer">
                             <button type="submit"  className="btn btn-primary">Save</button>
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-secondary" id='close_btn_edit_form' data-bs-dismiss="modal">Close</button>
                         </div>
                     </form>
                     </div>
